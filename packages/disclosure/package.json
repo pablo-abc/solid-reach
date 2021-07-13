@@ -13,7 +13,7 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "solid": "./dist/index.js",
+      "solid": "./dist/index.jsx",
       "default": "./dist/index.js"
     },
     "./package.json": "./package.json"
