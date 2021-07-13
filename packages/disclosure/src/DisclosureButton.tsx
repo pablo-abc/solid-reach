@@ -26,6 +26,7 @@ export default function DisclosureButton(props: DisclosureButtonProps) {
     <Dynamic<JSX.HTMLAttributes<HTMLButtonElement>>
       aria-controls={context.panelId}
       aria-expanded={context.open()}
+      id={`button---${context.disclosureId}`}
       {...others}
       component={local.as}
       onClick={handleClick}

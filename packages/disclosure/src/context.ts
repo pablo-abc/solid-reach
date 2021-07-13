@@ -1,4 +1,4 @@
-import { createContext, Accessor } from 'solid-js';
+import { createContext, useContext, Accessor } from 'solid-js';
 
 export type DisclosureContextValue = {
   disclosureId: string;
@@ -8,3 +8,7 @@ export type DisclosureContextValue = {
 };
 
 export const DisclosureContext = createContext({} as DisclosureContextValue);
+
+export function useDisclosureContext() {
+  return useContext(DisclosureContext);
+}
