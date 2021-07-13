@@ -1,0 +1,41 @@
+{
+  "name": "@solid-reach/utils",
+  "version": "0.0.1",
+  "description": "Common utilities for Solid reach packages",
+  "author": "Pablo Berganza <pablo@berganza.dev>",
+  "homepage": "https://github.com/pablo-abc/solid-reach/tree/main/packages/common",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "browser": "dist/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
+  "keywords": ["solid"],
+  "files": ["dist"],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/pablo-abc/solid-reach.git"
+  },
+  "scripts": {
+    "prebuild": "rimraf ./dist",
+    "build": "cross-env NODE_ENV=production rollup -c",
+    "dev": "rollup -cw",
+    "prepublishOnly": "pnpm build && pnpm test",
+    "test": "jest",
+    "test:ci": "jest --ci --coverage"
+  },
+  "bugs": {
+    "url": "https://github.com/pablo-abc/solid-reach/issues"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/index.js"
+    },
+    "./dist/utils/*": "./dist/esm/utils/*.js",
+    "./package.json": "./package.json"
+  }
+}
