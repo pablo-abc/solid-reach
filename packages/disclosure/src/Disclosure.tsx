@@ -14,8 +14,8 @@ export default function Disclosure(props: DisclosureProps) {
   props = mergeProps({ defaultOpen: false }, props);
   const wasControlled = props.open != null;
   let isControlled = wasControlled;
-  const id = createId(props.id) || 'disclosure';
-  const panelId = `panel---${id}`;
+  const id = () => createId(props.id) || 'disclosure';
+  const panelId = () => `panel---${id()}`;
   const [isOpen, setIsOpen] = createSignal(
     isControlled ? (props.open as boolean) : (props.defaultOpen as boolean)
   );

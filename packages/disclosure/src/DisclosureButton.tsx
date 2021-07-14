@@ -7,8 +7,7 @@ type DisclosureButtonProps = {
   children: JSX.Element;
   ref?: HTMLElement | ((el: HTMLElement) => void) | undefined;
   as?: Component | string;
-  [key: string]: unknown;
-};
+} & JSX.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export default function DisclosureButton(props: DisclosureButtonProps) {
   props = mergeProps({ as: 'button' }, props);
@@ -23,10 +22,10 @@ export default function DisclosureButton(props: DisclosureButtonProps) {
   }
 
   return (
-    <Dynamic<JSX.HTMLAttributes<HTMLButtonElement>>
-      aria-controls={context.panelId}
+    <Dynamic<JSX.ButtonHTMLAttributes<HTMLButtonElement>>
+      aria-controls={context.panelId()}
       aria-expanded={context.open()}
-      id={`button---${context.disclosureId}`}
+      id={`button---${context.disclosureId()}`}
       {...others}
       component={local.as}
       onClick={handleClick}

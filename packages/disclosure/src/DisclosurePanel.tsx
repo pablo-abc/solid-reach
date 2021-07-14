@@ -6,8 +6,7 @@ type DisclosurePanelProps = {
   children: JSX.Element;
   ref?: HTMLElement | ((el: HTMLElement) => void) | undefined;
   as?: Component | string;
-  [key: string]: unknown;
-};
+} & JSX.HTMLAttributes<HTMLDivElement>;
 
 export default function DisclosurePanel(props: DisclosurePanelProps) {
   props = mergeProps({ as: 'div' }, props);
@@ -15,14 +14,14 @@ export default function DisclosurePanel(props: DisclosurePanelProps) {
   const context = useContext(DisclosureContext);
 
   return (
-    <Dynamic<JSX.HTMLAttributes<HTMLElement>>
+    <Dynamic<JSX.HTMLAttributes<HTMLDivElement>>
       hidden={!context.open()}
       {...others}
       ref={props.ref}
       component={local.as}
       data-reach-disclosure-panel=""
       data-state={context.open() ? 'open' : 'collapsed'}
-      id={context.panelId}
+      id={context.panelId()}
     >
       {local.children}
     </Dynamic>
