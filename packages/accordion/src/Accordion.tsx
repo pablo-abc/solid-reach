@@ -8,6 +8,7 @@ import {
   Accessor,
   splitProps,
   onMount,
+  onCleanup,
 } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { InternalAccordionContextValue, AccordionContext } from './context';
@@ -121,11 +122,25 @@ export default function Accordion(props: AccordionProps) {
   };
 
   onMount(() => {
+    function mutate(mutationList: MutationRecord[]) {
+      if (!accordionRef.current) return;
+      for (const mutation of mutationList) {
+        if (mutation.type !== 'childList') continue;
+        const items = accordionRef.current.querySelectorAll(
+          '[data-reach-accordion-item=""]'
+        );
+        setDescendants(Array.from(items) as HTMLElement[]);
+      }
+    }
     if (!accordionRef.current) return;
     const items = accordionRef.current.querySelectorAll(
       '[data-reach-accordion-item=""]'
     );
     setDescendants(Array.from(items) as HTMLElement[]);
+
+    const observer = new MutationObserver(mutate);
+    observer.observe(accordionRef.current, { childList: true, subtree: true });
+    onCleanup(() => observer.disconnect());
   });
   return (
     <AccordionContext.Provider value={context}>
