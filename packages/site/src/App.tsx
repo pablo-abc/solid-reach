@@ -1,34 +1,28 @@
 import type { Component } from 'solid-js';
 import { onMount } from 'solid-js';
 import {
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
-} from '@solid-reach/disclosure';
-import VisuallyHidden from '@solid-reach/visually-hidden';
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+} from '@solid-reach/accordion';
 
 const App: Component = () => {
-  let div: any;
-  onMount(() => {
-    console.log('iv', div);
-  });
   return (
-    <>
-      <Disclosure>
-        <DisclosureButton>
-          Hello <VisuallyHidden>From the depths</VisuallyHidden>
-        </DisclosureButton>
-        <DisclosurePanel>I was hidden but I am not anymore</DisclosurePanel>
-      </Disclosure>
-      <Disclosure>
-        <DisclosureButton>
-          Hello <VisuallyHidden>From the depths</VisuallyHidden>
-        </DisclosureButton>
-        <DisclosurePanel ref={div}>
-          I was hidden but I am not anymore
-        </DisclosurePanel>
-      </Disclosure>
-    </>
+    <Accordion>
+      <AccordionItem>
+        <AccordionButton>1</AccordionButton>
+        <AccordionPanel>Hidden 1</AccordionPanel>
+      </AccordionItem>
+      <AccordionItem>
+        <AccordionButton>2</AccordionButton>
+        <AccordionPanel>Hidden 2</AccordionPanel>
+      </AccordionItem>
+      <AccordionItem>
+        <AccordionButton>3</AccordionButton>
+        <AccordionPanel>Hidden 3</AccordionPanel>
+      </AccordionItem>
+    </Accordion>
   );
 };
 
