@@ -1,4 +1,4 @@
-import { JSX, mergeProps, splitProps } from 'solid-js';
+import { JSX, mergeProps, splitProps, onMount } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { composeEventHandler, composeRefs, noop } from '@solid-reach/utils';
 import { DialogProps } from './types';
@@ -42,16 +42,16 @@ export default function DialogInner(props: DialogInnerProps) {
     mouseDownTarget = event.target;
   }
 
+  onMount(() => {
+    focusOn(overlayNode.current!);
+    activateFocusLock();
+  });
+
   return (
     <Dynamic<JSX.HTMLAttributes<HTMLDivElement>>
       {...others}
       component={local.as}
-      ref={composeRefs(
-        overlayNode,
-        props,
-        { ref: focusOn },
-        { ref: activateFocusLock }
-      )}
+      ref={composeRefs(overlayNode, props)}
       data-reach-dialog-overlay=""
       onClick={composeEventHandler(local.onClick as any, handleClick)}
       onKeyDown={composeEventHandler(local.onKeyDown as any, handleKeyDown)}
