@@ -41,20 +41,18 @@ let liveRegions: RegionElements = {
 };
 
 let renderTimer: number | null;
-let dispose: () => void | undefined;
+let dispose: { [key in RegionTypes]?: () => void } = {};
 function renderAlerts() {
   if (renderTimer != null) {
     window.clearTimeout(renderTimer);
-  }
-  if (dispose != null) {
-    dispose();
   }
   renderTimer = window.setTimeout(() => {
     Object.keys(elements).forEach((elementType) => {
       let regionType: RegionTypes = elementType as RegionTypes;
       let container = liveRegions[regionType]!;
       if (container) {
-        dispose = render(
+        dispose[regionType]?.();
+        dispose[regionType] = render(
           () => (
             <VisuallyHidden>
               <div
@@ -79,9 +77,9 @@ function renderAlerts() {
 function createMirror(type: 'polite' | 'assertive', doc: Document): Mirror {
   let key = ++keys[type];
 
-  let mount = (element: JSX.Element) => {
+  let mount = (element: JSX.Element | Accessor<JSX.Element>) => {
+    element = typeof element === 'function' ? element() : element;
     if (liveRegions[type]) {
-      element = (element as Accessor<JSX.Element>)();
       elements[type][key] = element;
       renderAlerts();
     } else {
@@ -93,14 +91,13 @@ function createMirror(type: 'polite' | 'assertive', doc: Document): Mirror {
     }
   };
 
-  let update = (element: JSX.Element) => {
-    element = (element as Accessor<JSX.Element>)();
+  let update = (element: JSX.Element | Accessor<JSX.Element>) => {
+    element = typeof element === 'function' ? element() : element;
     elements[type][key] = element;
     renderAlerts();
   };
 
   let unmount = () => {
-    console.log(key);
     delete elements[type][key];
     renderAlerts();
   };
