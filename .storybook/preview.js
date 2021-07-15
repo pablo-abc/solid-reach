@@ -13,7 +13,10 @@ export const parameters = {
 export const decorators = [
   (Story) =>
     createRoot(() => {
-      const story = Story();
-      return typeof story === 'function' ? story() : story;
+      return (
+        <div>
+          <Story />
+        </div>
+      );
     }),
 ];
