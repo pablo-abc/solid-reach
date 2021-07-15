@@ -22,8 +22,9 @@ export default function DialogInner(props: DialogInnerProps) {
   const overlayNode: { current?: HTMLDivElement } = {};
 
   function activateFocusLock() {
-    if (!local.initialFocusRef) return;
-    local.initialFocusRef.focus();
+    const initialFocusRef = local.initialFocusRef?.();
+    if (!initialFocusRef) return;
+    initialFocusRef.focus();
   }
 
   function handleClick(event: MouseEvent) {

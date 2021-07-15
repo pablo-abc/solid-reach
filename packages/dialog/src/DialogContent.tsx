@@ -1,9 +1,7 @@
 import { JSX, mergeProps, splitProps } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { composeEventHandler } from '@solid-reach/utils';
-import { DialogProps } from './types';
-
-type DialogContentProps = DialogProps & JSX.HTMLAttributes<HTMLDivElement>;
+import { DialogContentProps } from './types';
 
 export default function DialogContent(props: DialogContentProps) {
   props = mergeProps({ as: 'div' }, props);

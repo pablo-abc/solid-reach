@@ -1,10 +1,12 @@
-import { Component, JSX } from 'solid-js';
+import { Component, JSX, Accessor } from 'solid-js';
 
 export type DialogProps = {
   children: JSX.Element;
-  ref?: HTMLElement | ((el: HTMLElement) => void) | undefined;
+  ref?: HTMLDivElement | ((el: HTMLDivElement) => void);
   as?: Component | string;
   isOpen?: boolean;
-  initialFocusRef?: HTMLElement;
+  initialFocusRef?: Accessor<HTMLElement>;
   onDismiss?(event?: Event): void;
-};
+} & JSX.HTMLAttributes<HTMLDivElement>;
+
+export type DialogContentProps = DialogProps;
