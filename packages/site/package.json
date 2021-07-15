@@ -1,6 +1,6 @@
 {
   "name": "@solid-reach/site",
-  "version": "0.0.0",
+  "private": true,
   "description": "",
   "scripts": {
     "start": "vite",
@@ -16,6 +16,11 @@
     "@solid-reach/disclosure": "workspace:*",
     "@solid-reach/visually-hidden": "workspace:*",
     "@solid-reach/accordion": "workspace:*",
+    "@solid-reach/portal": "workspace:*",
+    "@solid-reach/dialog": "workspace:*",
+    "@solid-reach/alert-dialog": "workspace:*",
+    "@solid-reach/alert": "workspace:*",
+    "@solid-reach/skip-nav": "workspace:*",
     "solid-js": "^1.0.0"
   }
 }
