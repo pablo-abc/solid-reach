@@ -26,7 +26,7 @@ export type AccordionProps = {
   multiple?: boolean;
   onChange?(index?: number): void;
   ref?: ((ref: HTMLElement) => any) | HTMLElement;
-} & JSX.HTMLAttributes<HTMLElement>;
+} & Omit<JSX.HTMLAttributes<HTMLElement>, 'onChange'>;
 
 export default function Accordion(props: AccordionProps) {
   props = mergeProps(
@@ -144,7 +144,7 @@ export default function Accordion(props: AccordionProps) {
   });
   return (
     <AccordionContext.Provider value={context}>
-      <Dynamic<JSX.HTMLAttributes<HTMLElement>>
+      <Dynamic<AccordionProps>
         {...others}
         ref={composeRefs<HTMLElement>(accordionRef, props)}
         data-reach-accordion=""
