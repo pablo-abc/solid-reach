@@ -26,7 +26,7 @@ const App: Component = () => {
           <AccordionPanel>Hidden 3</AccordionPanel>
         </AccordionItem>
       </Accordion>
-      <Tabs keyboardActivation="manual" orientation="horizontal">
+      <Tabs orientation="horizontal">
         <TabList>
           <Tab>One</Tab> <Tab>Two</Tab> <Tab>Three</Tab>
         </TabList>

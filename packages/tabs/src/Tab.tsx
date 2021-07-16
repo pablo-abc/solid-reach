@@ -50,16 +50,14 @@ export default function Tab(props: TabProps) {
     onSelectTab(index());
   }
 
-  createEffect(() =>
-    setTimeout(() => {
-      if (isSelected() && ownRef.current && userInteractedRef.current) {
-        userInteractedRef.current = false;
-        if (typeof ownRef.current?.focus === 'function') {
-          ownRef.current.focus();
-        }
+  createEffect(() => {
+    if (isSelected() && ownRef.current && userInteractedRef.current) {
+      userInteractedRef.current = false;
+      if (typeof ownRef.current?.focus === 'function') {
+        ownRef.current.focus();
       }
-    })
-  );
+    }
+  });
 
   return (
     <Dynamic<TabProps>

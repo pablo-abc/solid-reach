@@ -32,3 +32,5 @@ The current objective is to get feature-parity with ReachUI. Ideally maintaining
 | 💪      | Tabs            |
 | 🛠      | Tooltip         |
 | 💪     | Visually Hidden |
+
+We are also missing dev goodies such as missing styles and other dev-only warnings.
