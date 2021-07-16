@@ -29,6 +29,6 @@ The current objective is to get feature-parity with ReachUI. Ideally maintaining
 | 🛠      | Slider          |
 | 💪     | Portal          |
 | 💪     | Skip Nav        |
-| 🛠      | Tabs            |
+| 💪      | Tabs            |
 | 🛠      | Tooltip         |
 | 💪     | Visually Hidden |
