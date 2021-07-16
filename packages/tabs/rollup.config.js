@@ -18,6 +18,10 @@ export default {
       extensions: ['.js', '.ts', '.tsx'],
       babelHelpers: 'bundled',
       presets: ['solid', '@babel/preset-typescript'],
+      plugins: [
+        'babel-plugin-annotate-pure-calls',
+        'babel-plugin-dev-expression',
+      ],
       exclude: 'node_modules/**',
     }),
   ],

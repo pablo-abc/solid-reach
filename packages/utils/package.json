@@ -10,8 +10,12 @@
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
   "sideEffects": false,
-  "keywords": ["solid"],
-  "files": ["dist"],
+  "keywords": [
+    "solid"
+  ],
+  "files": [
+    "dist"
+  ],
   "publishConfig": {
     "access": "public"
   },
@@ -37,5 +41,11 @@
     },
     "./dist/utils/*": "./dist/esm/utils/*.js",
     "./package.json": "./package.json"
+  },
+  "devDependencies": {
+    "babel-plugin-annotate-pure-calls": "^0.4.0",
+    "babel-plugin-dev-expression": "^0.2.2",
+    "tiny-invariant": "^1.1.0",
+    "tiny-warning": "^1.0.3"
   }
 }
