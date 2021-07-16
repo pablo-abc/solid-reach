@@ -264,6 +264,7 @@ importers:
       '@solid-reach/disclosure': workspace:*
       '@solid-reach/portal': workspace:*
       '@solid-reach/skip-nav': workspace:*
+      '@solid-reach/tabs': workspace:*
       '@solid-reach/visually-hidden': workspace:*
       solid-js: ^1.0.0
       vite: ^2.3.8
@@ -276,6 +277,7 @@ importers:
       '@solid-reach/disclosure': link:../disclosure
       '@solid-reach/portal': link:../portal
       '@solid-reach/skip-nav': link:../skip-nav
+      '@solid-reach/tabs': link:../tabs
       '@solid-reach/visually-hidden': link:../visually-hidden
       solid-js: 1.0.2
     devDependencies:
@@ -283,6 +285,37 @@ importers:
       vite-plugin-solid: 2.0.0
 
   packages/skip-nav:
+    specifiers:
+      '@babel/core': ^7.14.6
+      '@babel/preset-typescript': ^7.14.5
+      '@rollup/plugin-babel': ^5.3.0
+      '@rollup/plugin-node-resolve': ^13.0.0
+      '@solid-reach/utils': workspace:*
+      '@types/node': ^16.3.1
+      babel-preset-solid: ^1.0.1
+      prettier: ^2.3.2
+      rollup: ^2.53.1
+      rollup-plugin-terser: ^7.0.2
+      solid-js: ^1.0.2
+      tsc-watch: ^4.4.0
+      typescript: ^4.3.5
+    dependencies:
+      '@solid-reach/utils': link:../utils
+    devDependencies:
+      '@babel/core': 7.14.6
+      '@babel/preset-typescript': 7.14.5_@babel+core@7.14.6
+      '@rollup/plugin-babel': 5.3.0_@babel+core@7.14.6+rollup@2.53.1
+      '@rollup/plugin-node-resolve': 13.0.0_rollup@2.53.1
+      '@types/node': 16.3.2
+      babel-preset-solid: 1.0.1_@babel+core@7.14.6
+      prettier: 2.3.2
+      rollup: 2.53.1
+      rollup-plugin-terser: 7.0.2_rollup@2.53.1
+      solid-js: 1.0.2
+      tsc-watch: 4.4.0_typescript@4.3.5
+      typescript: 4.3.5
+
+  packages/tabs:
     specifiers:
       '@babel/core': ^7.14.6
       '@babel/preset-typescript': ^7.14.5

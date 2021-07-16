@@ -12,11 +12,9 @@ export const parameters = {
 
 export const decorators = [
   (Story) =>
-    createRoot(() => {
-      return (
-        <div>
-          <Story />
-        </div>
-      );
-    }),
+    createRoot(() => (
+      <div>
+        <Story />
+      </div>
+    )),
 ];

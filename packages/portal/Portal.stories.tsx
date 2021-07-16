@@ -3,12 +3,12 @@ import { createSignal, Show, onMount } from 'solid-js';
 
 export default {
   title: 'Portal',
-  argTypes: {
-    type: { control: 'text' },
+  parameters: {
+    controls: { hideNoControlsWarning: true },
   },
 };
 
-export const Default: any = (props: any) => {
+export const Default: any = () => {
   const [show, setShow] = createSignal(false);
   onMount(() => setTimeout(() => setShow(true)));
   return (
@@ -30,7 +30,7 @@ export const Default: any = (props: any) => {
         clipped overflow, but the portal's styles are just fine.
       </div>
       <Show when={show()}>
-        <Portal type={props.type}>
+        <Portal>
           <div
             style={{
               position: 'absolute',
@@ -50,8 +50,4 @@ export const Default: any = (props: any) => {
       </Show>
     </div>
   );
-};
-
-Default.args = {
-  type: undefined,
 };
