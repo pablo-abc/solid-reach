@@ -6,23 +6,43 @@ import {
   AccordionButton,
   AccordionPanel,
 } from '@solid-reach/accordion';
+import { Tab, TabList, Tabs, TabPanel, TabPanels } from '@solid-reach/tabs';
+import '@solid-reach/tabs/styles.css';
 
 const App: Component = () => {
   return (
-    <Accordion>
-      <AccordionItem>
-        <AccordionButton>1</AccordionButton>
-        <AccordionPanel>Hidden 1</AccordionPanel>
-      </AccordionItem>
-      <AccordionItem>
-        <AccordionButton>2</AccordionButton>
-        <AccordionPanel>Hidden 2</AccordionPanel>
-      </AccordionItem>
-      <AccordionItem>
-        <AccordionButton>3</AccordionButton>
-        <AccordionPanel>Hidden 3</AccordionPanel>
-      </AccordionItem>
-    </Accordion>
+    <main>
+      <Accordion>
+        <AccordionItem>
+          <AccordionButton>1</AccordionButton>
+          <AccordionPanel>Hidden 1</AccordionPanel>
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionButton>2</AccordionButton>
+          <AccordionPanel>Hidden 2</AccordionPanel>
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionButton>3</AccordionButton>
+          <AccordionPanel>Hidden 3</AccordionPanel>
+        </AccordionItem>
+      </Accordion>
+      <Tabs keyboardActivation="manual" orientation="horizontal">
+        <TabList>
+          <Tab>One</Tab> <Tab>Two</Tab> <Tab>Three</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>
+            <p>one!</p>
+          </TabPanel>
+          <TabPanel>
+            <p>two!</p>
+          </TabPanel>
+          <TabPanel>
+            <p>three!</p>
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
+    </main>
   );
 };
 
