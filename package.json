@@ -11,7 +11,10 @@
     "build": "pnpm --filter='!@solid-reach/site' build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook --docs -o docs"
+    "build-storybook": "build-storybook --docs -o docs",
+    "prepublishOnly": "pinst --disable",
+    "publish": "pnpm i && pnpm -r publish --no-git-checks --publish-branch main",
+    "postpublish": "pinst --enable"
   },
   "author": "Pablo Berganza <pablo@berganza.dev>",
   "license": "MIT",

@@ -10,8 +10,12 @@
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
   "sideEffects": false,
-  "keywords": ["solid"],
-  "files": ["dist"],
+  "keywords": [
+    "solid"
+  ],
+  "files": [
+    "dist"
+  ],
   "publishConfig": {
     "access": "public"
   },
@@ -23,7 +27,7 @@
     "prebuild": "rimraf ./dist",
     "build": "cross-env NODE_ENV=production rollup -c",
     "dev": "rollup -cw",
-    "prepublishOnly": "pnpm build && pnpm test",
+    "prepublishOnly": "pnpm build",
     "test": "jest",
     "test:ci": "jest --ci --coverage"
   },
