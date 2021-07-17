@@ -1,4 +1,6 @@
-import { createRoot } from 'solid-js';
+import { createRoot, createSignal, Show } from 'solid-js';
+
+window.__DEV__ = true;
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -12,9 +14,15 @@ export const parameters = {
 
 export const decorators = [
   (Story) =>
-    createRoot(() => (
-      <div>
-        <Story />
-      </div>
-    )),
+    createRoot(() => {
+      const [show, setShow] = createSignal(false);
+      setTimeout(() => setShow(true));
+      return (
+        <div>
+          <Show when={show()}>
+            <Story />
+          </Show>
+        </div>
+      );
+    }),
 ];

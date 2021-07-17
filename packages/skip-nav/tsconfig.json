@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "emitDeclarationOnly": true,
     "declaration": true,
     "target": "esnext",
     "newLine": "LF",
@@ -8,8 +9,9 @@
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
     "outDir": "./dist",
-    "module": "esnext"
+    "module": "esnext",
+    "typeRoots": ["./node_modules/@types", "../../typings"]
   },
-  "include": ["./src"],
+  "include": ["./src", "../../typings"],
   "exclude": ["node_modules/"]
 }

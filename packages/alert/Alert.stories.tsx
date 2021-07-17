@@ -2,7 +2,6 @@ import Alert from './src';
 
 export default {
   title: 'Alert',
-  component: Alert,
   argTypes: {
     type: {
       options: ['assertive', 'polite'],

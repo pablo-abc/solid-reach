@@ -1,17 +1,18 @@
 import { composeRefs, createId, noop } from '@solid-reach/utils';
 import {
   Component,
+  createEffect,
+  createMemo,
+  createSignal,
   JSX,
   mergeProps,
-  createSignal,
-  createMemo,
-  Accessor,
-  splitProps,
-  onMount,
   onCleanup,
+  onMount,
+  splitProps,
 } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
-import { InternalAccordionContextValue, AccordionContext } from './context';
+import warning from 'tiny-warning';
+import { AccordionContext, InternalAccordionContextValue } from './context';
 
 type AccordionIndex = number | number[];
 
@@ -34,13 +35,14 @@ export default function Accordion(props: AccordionProps) {
     props
   );
   const [local, others] = splitProps(props, ['as', 'ref', 'children']);
-  const isControlled = typeof props.index !== 'undefined';
+  const isControlled = () => typeof props.index !== 'undefined';
   const controlledIndex = createMemo(() => props.index);
   const accordionRef: { current?: HTMLElement } = {};
   const id = createId(props.id);
+
   function getDefaultOpen() {
     switch (true) {
-      case isControlled:
+      case isControlled():
         return controlledIndex!;
 
       // If we have a defaultIndex, we need to do a few checks
@@ -71,13 +73,37 @@ export default function Accordion(props: AccordionProps) {
         return props.multiple ? [0] : 0;
     }
   }
+
   const [openPanels, setOpenPanels] = createSignal<AccordionIndex>(
     getDefaultOpen() as AccordionIndex
   );
+
+  if (__DEV__) {
+    const wasControlled = isControlled();
+    createEffect(() => {
+      warning(
+        !(!isControlled() && wasControlled),
+        'Accordion is changing from controlled to uncontrolled. Accordion should not switch from controlled to uncontrolled (or vice versa). Decide between using a controlled or uncontrolled Accordion for the lifetime of the component. Check the `index` prop being passed in.'
+      );
+      warning(
+        !(isControlled() && !wasControlled),
+        'Accordion is changing from uncontrolled to controlled. Accordion should not switch from uncontrolled to controlled (or vice versa). Decide between using a controlled or uncontrolled Accordion for the lifetime of the component. Check the `index` prop being passed in.'
+      );
+      warning(
+        !(isControlled() && props.collapsible),
+        'The `collapsible` prop on Accordion has no effect when the state of the component is controlled.'
+      );
+      warning(
+        !(isControlled() && props.multiple),
+        'The `multiple` prop on Accordion has no effect when the state of the component is controlled.'
+      );
+    });
+  }
+
   function onSelectPanel(index: number) {
     props.onChange && props.onChange(index);
 
-    if (!isControlled) {
+    if (!isControlled()) {
       setOpenPanels((prevOpenPanels) => {
         /*
          * If we're dealing with an uncontrolled component, the index arg
@@ -113,9 +139,7 @@ export default function Accordion(props: AccordionProps) {
 
   const context: InternalAccordionContextValue = {
     accordionId: id,
-    openPanels: isControlled
-      ? (controlledIndex as Accessor<AccordionIndex>)
-      : openPanels,
+    openPanels: () => (isControlled() ? controlledIndex()! : openPanels()),
     onSelectPanel: props.readOnly ? noop : onSelectPanel,
     readOnly: createMemo(() => props.readOnly!),
     descendants,
