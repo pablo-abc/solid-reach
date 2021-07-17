@@ -2,8 +2,6 @@ import typescript from 'rollup-plugin-ts';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
-import bundleSize from 'rollup-plugin-bundle-size';
-import { terser } from 'rollup-plugin-terser';
 import pkg from './package.json';
 import * as fs from 'fs';
 
@@ -35,8 +33,6 @@ export default [
       resolve({ browser: true }),
       commonjs(),
       typescript(),
-      prod && terser(),
-      prod && bundleSize(),
     ],
   },
   {
@@ -60,7 +56,6 @@ export default [
       typescript({
         declarationDir: './dist/esm',
       }),
-      prod && terser(),
     ],
   },
 ];

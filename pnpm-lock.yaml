@@ -215,13 +215,11 @@ importers:
     specifiers:
       babel-plugin-annotate-pure-calls: ^0.4.0
       babel-plugin-dev-expression: ^0.2.2
-      solid-js: ^1.0.3
       tiny-invariant: ^1.1.0
       tiny-warning: ^1.0.3
     devDependencies:
       babel-plugin-annotate-pure-calls: 0.4.0_@babel+core@7.14.6
       babel-plugin-dev-expression: 0.2.2_@babel+core@7.14.6
-      solid-js: 1.0.3
       tiny-invariant: 1.1.0
       tiny-warning: 1.0.3
 
@@ -10416,10 +10414,6 @@ packages:
 
   /solid-js/1.0.2:
     resolution: {integrity: sha512-zQIbVlBH9WNqXfUSOhZAGZv1bkuaeo5yke+M4r5QgG5IuFxP2+ltGJjGLBN7r+Nj9M+H9QK7ufHVeexQsDvg7A==}
-
-  /solid-js/1.0.3:
-    resolution: {integrity: sha512-sCSUJvgcsMkEy3r+lFHNCApb7D8lFLq8gZy2PFNDvD5Yv7fVS+7S0PMHBzyLWxTYMJrHKoatlZWkpBk+eUAjLw==}
-    dev: true
 
   /solid-refresh/0.2.1_solid-js@1.0.2:
     resolution: {integrity: sha512-8iqVw+FxDUj5CQnadAD+D5bLlzA/yBhMx2rHECGN2e3IQGtBArNdBUHduPBPpqfnufvnP2IwszLhgcg/IdABQQ==}
