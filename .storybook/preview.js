@@ -1,4 +1,4 @@
-import { createRoot, createSignal, Show } from 'solid-js';
+import { onMount, createRoot, createSignal, Show } from 'solid-js';
 
 window.__DEV__ = true;
 
@@ -17,6 +17,13 @@ export const decorators = [
     createRoot(() => {
       const [show, setShow] = createSignal(false);
       setTimeout(() => setShow(true));
+      onMount(() => {
+        let portal = document.body.querySelector('reach-portal');
+        while (portal) {
+          document.body.removeChild(portal);
+          portal = document.body.querySelector('reach-portal');
+        }
+      });
       return (
         <div>
           <Show when={show()}>

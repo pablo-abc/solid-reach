@@ -1,14 +1,11 @@
-import { composeRefs, createId, noop } from '@solid-reach/utils';
+import { composeRefs, createDescendants, createId } from '@solid-reach/utils';
 import {
   Component,
+  createMemo,
+  createSignal,
   JSX,
   mergeProps,
-  createSignal,
-  createMemo,
-  Accessor,
   splitProps,
-  onMount,
-  onCleanup,
 } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { InternalTabsContextValue, TabsContext } from './context';
@@ -61,7 +58,10 @@ export default function Tabs(props: TabsProps) {
   );
   const [focusedIndex, setFocusedIndex] = createSignal(-1);
 
-  const [tabs, setTabs] = createSignal<HTMLButtonElement[]>([]);
+  const descendants = createDescendants<HTMLButtonElement>(
+    () => tabsRef.current,
+    '[data-reach-tab=""]'
+  );
 
   const context: InternalTabsContextValue = {
     focusedIndex,
@@ -84,7 +84,7 @@ export default function Tabs(props: TabsProps) {
     onSelectTabWithKeyboard(index: number) {
       if (local.readOnly) return;
       userInteractedRef.current = true;
-      const tabElement = tabs()[index];
+      const tabElement = descendants()[index];
       switch (local.keyboardActivation) {
         case 'manual': {
           tabElement?.focus();
@@ -104,26 +104,8 @@ export default function Tabs(props: TabsProps) {
     setFocusedIndex,
     setSelectedIndex,
     userInteractedRef,
-    descendants: tabs,
+    descendants,
   };
-
-  onMount(() => {
-    function mutate(mutationList: MutationRecord[]) {
-      if (!tabsRef.current) return;
-      for (const mutation of mutationList) {
-        if (mutation.type !== 'childList') continue;
-        const items = tabsRef.current.querySelectorAll('[data-reach-tab=""]');
-        setTabs(Array.from(items) as HTMLButtonElement[]);
-      }
-    }
-    if (!tabsRef.current) return;
-    const items = tabsRef.current.querySelectorAll('[data-reach-tab=""]');
-    setTabs(Array.from(items) as HTMLButtonElement[]);
-
-    const observer = new MutationObserver(mutate);
-    observer.observe(tabsRef.current, { childList: true, subtree: true });
-    onCleanup(() => observer.disconnect());
-  });
 
   return (
     <TabsContext.Provider value={context}>

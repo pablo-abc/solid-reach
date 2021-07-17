@@ -130,6 +130,20 @@ importers:
       tiny-invariant: 1.1.0
       tiny-warning: 1.0.3
 
+  packages/popover:
+    specifiers:
+      '@reach/observe-rect': ^1.2.0
+      '@solid-reach/portal': workspace:*
+      '@solid-reach/utils': workspace:*
+      tiny-invariant: ^1.1.0
+      tiny-warning: ^1.0.3
+    dependencies:
+      '@reach/observe-rect': 1.2.0
+      '@solid-reach/portal': link:../portal
+      '@solid-reach/utils': link:../utils
+      tiny-invariant: 1.1.0
+      tiny-warning: 1.0.3
+
   packages/portal:
     specifiers:
       '@solid-reach/utils': workspace:*
@@ -201,16 +215,23 @@ importers:
     specifiers:
       babel-plugin-annotate-pure-calls: ^0.4.0
       babel-plugin-dev-expression: ^0.2.2
+      solid-js: ^1.0.3
       tiny-invariant: ^1.1.0
       tiny-warning: ^1.0.3
     devDependencies:
       babel-plugin-annotate-pure-calls: 0.4.0_@babel+core@7.14.6
       babel-plugin-dev-expression: 0.2.2_@babel+core@7.14.6
+      solid-js: 1.0.3
       tiny-invariant: 1.1.0
       tiny-warning: 1.0.3
 
   packages/visually-hidden:
-    specifiers: {}
+    specifiers:
+      tiny-invariant: ^1.1.0
+      tiny-warning: ^1.0.3
+    dependencies:
+      tiny-invariant: 1.1.0
+      tiny-warning: 1.0.3
 
 packages:
 
@@ -2043,6 +2064,10 @@ packages:
   /@popperjs/core/2.9.2:
     resolution: {integrity: sha512-VZMYa7+fXHdwIq1TDhSXoVmSPEGM/aa+6Aiq3nVVJ9bXr24zScr+NlKFKC3iPljA7ho/GAZr+d2jOf5GIRC30Q==}
     dev: true
+
+  /@reach/observe-rect/1.2.0:
+    resolution: {integrity: sha512-Ba7HmkFgfQxZqqaeIWWkNK0rEhpxVQHIoVyW1YDSkGsGIXzcaW4deC8B0pZrNSSyLTdIk7y+5olKt5+g0GmFIQ==}
+    dev: false
 
   /@reach/router/1.3.4:
     resolution: {integrity: sha512-+mtn9wjlB9NN2CNnnC/BRYtwdKBfSyyasPYraNAyvaV1occr/5NnB4CVzjEZipNHwYebQwcndGUmpFzxAUoqSA==}
@@ -10391,6 +10416,10 @@ packages:
 
   /solid-js/1.0.2:
     resolution: {integrity: sha512-zQIbVlBH9WNqXfUSOhZAGZv1bkuaeo5yke+M4r5QgG5IuFxP2+ltGJjGLBN7r+Nj9M+H9QK7ufHVeexQsDvg7A==}
+
+  /solid-js/1.0.3:
+    resolution: {integrity: sha512-sCSUJvgcsMkEy3r+lFHNCApb7D8lFLq8gZy2PFNDvD5Yv7fVS+7S0PMHBzyLWxTYMJrHKoatlZWkpBk+eUAjLw==}
+    dev: true
 
   /solid-refresh/0.2.1_solid-js@1.0.2:
     resolution: {integrity: sha512-8iqVw+FxDUj5CQnadAD+D5bLlzA/yBhMx2rHECGN2e3IQGtBArNdBUHduPBPpqfnufvnP2IwszLhgcg/IdABQQ==}

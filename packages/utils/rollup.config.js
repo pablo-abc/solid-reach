@@ -17,7 +17,7 @@ const name = 'SolidReachUtils';
 export default [
   {
     input: './src/index.ts',
-    external: ['tippy.js'],
+    external: ['solid-js', 'solid-js/web', 'solid-js/store'],
     output: {
       file: pkg.browser,
       format: 'umd',
@@ -41,13 +41,12 @@ export default [
   },
   {
     input: ['./src/index.ts', ...modules],
-    external: ['tippy.js'],
+    external: ['solid-js', 'solid-js/web', 'solid-js/store'],
     output: {
       dir: 'dist/esm',
       format: 'esm',
       sourcemap: prod,
       exports: 'named',
-      preserveModules: true,
     },
     plugins: [
       replace({

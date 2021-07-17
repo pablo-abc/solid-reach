@@ -15,6 +15,9 @@ const Template: any = (props: any) => {
 
 export const Uncontrolled = Template.bind({});
 Uncontrolled.args = {};
+Uncontrolled.parameters = {
+  controls: { hideNoControlsWarning: true },
+};
 
 export const Controlled = Template.bind({});
 

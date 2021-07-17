@@ -6,7 +6,7 @@
   "sideEffects": ["*.css"],
   "author": "Pablo Berganza <pablo@berganza.dev>",
   "repository": "github:pablo-abc/solid-reach",
-  "homepage": "https://github.com/pablo-abc/solid-reach/tree/main/packages/reporter-solid",
+  "homepage": "https://github.com/pablo-abc/solid-reach/tree/main/packages/dialog",
   "keywords": ["solidjs", "solid", "components", "a11y"],
   "license": "MIT",
   "type": "module",

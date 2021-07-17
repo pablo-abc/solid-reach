@@ -1,4 +1,9 @@
-import { composeRefs, createId, noop } from '@solid-reach/utils';
+import {
+  composeRefs,
+  createId,
+  noop,
+  createDescendants,
+} from '@solid-reach/utils';
 import {
   Component,
   createEffect,
@@ -135,7 +140,10 @@ export default function Accordion(props: AccordionProps) {
       });
     }
   }
-  const [descendants, setDescendants] = createSignal<HTMLElement[]>([]);
+  const descendants = createDescendants(
+    () => accordionRef.current,
+    '[data-reach-accordion-item=""]'
+  );
 
   const context: InternalAccordionContextValue = {
     accordionId: id,
@@ -145,27 +153,6 @@ export default function Accordion(props: AccordionProps) {
     descendants,
   };
 
-  onMount(() => {
-    function mutate(mutationList: MutationRecord[]) {
-      if (!accordionRef.current) return;
-      for (const mutation of mutationList) {
-        if (mutation.type !== 'childList') continue;
-        const items = accordionRef.current.querySelectorAll(
-          '[data-reach-accordion-item=""]'
-        );
-        setDescendants(Array.from(items) as HTMLElement[]);
-      }
-    }
-    if (!accordionRef.current) return;
-    const items = accordionRef.current.querySelectorAll(
-      '[data-reach-accordion-item=""]'
-    );
-    setDescendants(Array.from(items) as HTMLElement[]);
-
-    const observer = new MutationObserver(mutate);
-    observer.observe(accordionRef.current, { childList: true, subtree: true });
-    onCleanup(() => observer.disconnect());
-  });
   return (
     <AccordionContext.Provider value={context}>
       <Dynamic<AccordionProps>

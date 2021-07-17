@@ -1,12 +1,12 @@
 {
-  "name": "@solid-reach/skip-nav",
+  "name": "@solid-reach/popover",
   "version": "0.0.1",
-  "description": "A skip-nav component",
+  "description": "A popover component",
   "main": "dist/index.js",
-  "sideEffects": ["*.css"],
+  "sideEffects": false,
   "author": "Pablo Berganza <pablo@berganza.dev>",
   "repository": "github:pablo-abc/solid-reach",
-  "homepage": "https://github.com/pablo-abc/solid-reach/tree/main/packages/skip-nav",
+  "homepage": "https://github.com/pablo-abc/solid-reach/tree/main/packages/popover",
   "keywords": ["solidjs", "solid", "a11y", "components"],
   "license": "MIT",
   "type": "module",
@@ -16,10 +16,9 @@
       "solid": "./dist/index.jsx",
       "default": "./dist/index.js"
     },
-    "./styles.css": "./styles.css",
     "./package.json": "./package.json"
   },
-  "files": ["dist", "styles.css"],
+  "files": ["dist"],
   "scripts": {
     "prebuild": "rimraf ./dist",
     "build": "tsc && rollup -c",
@@ -30,6 +29,8 @@
     "solid-js": "^1.0.0"
   },
   "dependencies": {
+    "@reach/observe-rect": "^1.2.0",
+    "@solid-reach/portal": "workspace:*",
     "@solid-reach/utils": "workspace:*",
     "tiny-invariant": "^1.1.0",
     "tiny-warning": "^1.0.3"
