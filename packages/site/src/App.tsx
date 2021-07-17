@@ -1,5 +1,5 @@
 import type { Component } from 'solid-js';
-import { onMount } from 'solid-js';
+import { createSignal } from 'solid-js';
 import {
   Accordion,
   AccordionItem,
@@ -7,9 +7,15 @@ import {
   AccordionPanel,
 } from '@solid-reach/accordion';
 import { Tab, TabList, Tabs, TabPanel, TabPanels } from '@solid-reach/tabs';
+import { Dialog } from '@solid-reach/dialog';
+import VisuallyHidden from '@solid-reach/visually-hidden';
+import '@solid-reach/dialog/styles.css';
 import '@solid-reach/tabs/styles.css';
 
 const App: Component = () => {
+  const [show, setShow] = createSignal(false);
+  const open = () => setShow(true);
+  const close = () => setShow(false);
   return (
     <main>
       <Accordion>
@@ -42,6 +48,13 @@ const App: Component = () => {
           </TabPanel>
         </TabPanels>
       </Tabs>
+      <button onClick={open}>Open Dialog</button>
+      <Dialog isOpen={show()} onDismiss={close}>
+        <button onClick={close}>
+          <VisuallyHidden>Close</VisuallyHidden> <span aria-hidden>×</span>
+        </button>
+        <p>Hello there. I am a dialog</p>
+      </Dialog>
     </main>
   );
 };
