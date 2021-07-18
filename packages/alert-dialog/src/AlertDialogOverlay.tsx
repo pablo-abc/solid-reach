@@ -1,6 +1,6 @@
 import { composeRefs, createId } from '@solid-reach/utils';
 import { DialogOverlay } from '@solid-reach/dialog';
-import { splitProps } from 'solid-js';
+import { splitProps, createMemo } from 'solid-js';
 import { AlertDialogProps } from './types';
 import { AlertDialogContext, AlertDialogContextValue } from './context';
 
@@ -11,7 +11,7 @@ export default function AlertDialogOverlay(props: AlertDialogProps) {
     'ref',
   ]);
   const overlayRef: { current?: HTMLDivElement } = {};
-  const id = () => createId(props.id);
+  const id = createMemo(() => createId(props.id));
   const labelId = () => (id() ? `alert-dialog---${id()}` : undefined);
   const descriptionId = () =>
     id() ? `alert-description---${id()}` : undefined;

@@ -1,4 +1,3 @@
-import { createSignal, Show } from 'solid-js';
 import {
   Combobox,
   ComboboxList,
@@ -13,20 +12,16 @@ export default {
 };
 
 const Template: any = () => {
-  const [show, setShow] = createSignal(false);
-  setTimeout(() => setShow(true));
   return (
-    <Show when={show()}>
-      <Combobox aria-label="choose a fruit">
-        <ComboboxInput />
-        <ComboboxPopover>
-          <ComboboxList>
-            <ComboboxOption value="Apple" />
-            <ComboboxOption value="Banana" />
-          </ComboboxList>
-        </ComboboxPopover>
-      </Combobox>
-    </Show>
+    <Combobox aria-label="choose a fruit">
+      <ComboboxInput />
+      <ComboboxPopover>
+        <ComboboxList>
+          <ComboboxOption value="Apple" />
+          <ComboboxOption value="Banana" />
+        </ComboboxList>
+      </ComboboxPopover>
+    </Combobox>
   );
 };
 

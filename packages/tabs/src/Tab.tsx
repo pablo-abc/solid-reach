@@ -59,6 +59,14 @@ export default function Tab(props: TabProps) {
     }
   });
 
+  const handleFocus = composeEventHandler(local.onFocus, () => {
+    setFocusedIndex(index());
+  });
+
+  const handleBlur = composeEventHandler(local.onBlur, () => {
+    setFocusedIndex(-1);
+  });
+
   return (
     <Dynamic<TabProps>
       aria-controls={`${tabsId()}---panel---${index()}`}
@@ -75,12 +83,8 @@ export default function Tab(props: TabProps) {
       disabled={local.disabled}
       id={`${tabsId()}---tab---${index()}`}
       onClick={onSelect}
-      onFocus={composeEventHandler(local.onFocus as any, () => {
-        setFocusedIndex(index());
-      })}
-      onBlur={composeEventHandler(local.onBlur as any, () => {
-        setFocusedIndex(-1);
-      })}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
       type={htmlType()}
     >
       {local.children}

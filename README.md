@@ -21,7 +21,7 @@ The current objective is to get feature-parity with ReachUI. Ideally maintaining
 | 💪     | Alert           |
 | 💪     | Alert Dialog    |
 | 🛠      | Checkbox        |
-| 🛠      | Combo Box       |
+| 💪      | Combo Box       |
 | 💪     | Dialog (Modal)  |
 | 💪     | Disclosure      |
 | 🛠      | Listbox         |

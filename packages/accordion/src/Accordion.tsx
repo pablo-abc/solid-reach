@@ -43,7 +43,7 @@ export default function Accordion(props: AccordionProps) {
   const isControlled = () => typeof props.index !== 'undefined';
   const controlledIndex = createMemo(() => props.index);
   const accordionRef: { current?: HTMLElement } = {};
-  const id = createId(props.id);
+  const id = createMemo(() => createId(props.id));
 
   function getDefaultOpen() {
     switch (true) {

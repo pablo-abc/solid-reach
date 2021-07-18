@@ -2,7 +2,7 @@ import { createContext, useContext, Accessor } from 'solid-js';
 
 type AccordionIndex = number | number[];
 export type InternalAccordionContextValue = {
-  accordionId: string | undefined;
+  accordionId: Accessor<string | undefined>;
   openPanels: Accessor<AccordionIndex>;
   onSelectPanel(index: AccordionIndex): void;
   readOnly: Accessor<boolean>;

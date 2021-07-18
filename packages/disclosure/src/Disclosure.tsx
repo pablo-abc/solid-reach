@@ -1,5 +1,11 @@
 import { createId } from '@solid-reach/utils';
-import { createSignal, JSX, mergeProps, createEffect } from 'solid-js';
+import {
+  createSignal,
+  JSX,
+  mergeProps,
+  createEffect,
+  createMemo,
+} from 'solid-js';
 import { DisclosureContextValue, DisclosureContext } from './context';
 import warning from 'tiny-warning';
 
@@ -14,7 +20,7 @@ type DisclosureProps = {
 export default function Disclosure(props: DisclosureProps) {
   props = mergeProps({ defaultOpen: false }, props);
   const isControlled = () => props.open != null;
-  const id = () => createId(props.id) || 'disclosure';
+  const id = createMemo(() => createId(props.id) || 'disclosure');
   const panelId = () => `panel---${id()}`;
   const [isOpen, setIsOpen] = createSignal(
     isControlled() ? (props.open as boolean) : (props.defaultOpen as boolean)

@@ -22,6 +22,7 @@
     "@solid-reach/alert": "workspace:*",
     "@solid-reach/skip-nav": "workspace:*",
     "@solid-reach/tabs": "workspace:*",
+    "@solid-reach/combobox": "workspace:*",
     "solid-js": "^1.0.0"
   }
 }

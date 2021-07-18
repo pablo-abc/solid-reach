@@ -27,21 +27,30 @@ export default function DialogInner(props: DialogInnerProps) {
     initialFocusRef.focus();
   }
 
-  function handleClick(event: MouseEvent) {
-    if (mouseDownTarget !== event.target) return;
-    event.stopPropagation();
-    local.onDismiss!(event);
-  }
+  const handleClick = composeEventHandler(
+    local.onClick,
+    (event: MouseEvent) => {
+      if (mouseDownTarget !== event.target) return;
+      event.stopPropagation();
+      local.onDismiss!(event);
+    }
+  );
 
-  function handleKeyDown(event: KeyboardEvent) {
-    if (event.key !== 'Escape') return;
-    event.stopPropagation();
-    local.onDismiss!(event);
-  }
+  const handleKeyDown = composeEventHandler(
+    local.onKeyDown,
+    (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return;
+      event.stopPropagation();
+      local.onDismiss!(event);
+    }
+  );
 
-  function handleMouseDown(event: MouseEvent) {
-    mouseDownTarget = event.target;
-  }
+  const handleMouseDown = composeEventHandler(
+    local.onMouseDown,
+    (event: MouseEvent) => {
+      mouseDownTarget = event.target;
+    }
+  );
 
   onMount(() => {
     focusOn(overlayNode.current!);
@@ -54,12 +63,9 @@ export default function DialogInner(props: DialogInnerProps) {
       component={local.as}
       ref={composeRefs(overlayNode, props)}
       data-reach-dialog-overlay=""
-      onClick={composeEventHandler(local.onClick as any, handleClick)}
-      onKeyDown={composeEventHandler(local.onKeyDown as any, handleKeyDown)}
-      onMouseDown={composeEventHandler(
-        local.onMouseDown as any,
-        handleMouseDown
-      )}
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
+      onMouseDown={handleMouseDown}
     >
       {local.children}
     </Dynamic>

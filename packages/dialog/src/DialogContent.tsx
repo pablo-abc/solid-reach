@@ -13,6 +13,12 @@ export default function DialogContent(props: DialogContentProps) {
     'ref',
   ]);
 
+  const handleClick = composeEventHandler(
+    local.onClick as any,
+    (event: Event) => {
+      event.stopPropagation();
+    }
+  );
   return (
     <Dynamic<JSX.HTMLAttributes<HTMLDivElement>>
       aria-modal="true"
@@ -22,9 +28,7 @@ export default function DialogContent(props: DialogContentProps) {
       component={local.as}
       ref={props.ref}
       data-reach-dialog-content=""
-      onClick={composeEventHandler(local.onClick as any, (event) => {
-        event.stopPropagation();
-      })}
+      onClick={handleClick}
     >
       {local.children}
     </Dynamic>

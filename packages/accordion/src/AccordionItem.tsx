@@ -37,7 +37,9 @@ export default function AccordionItem(props: AccordionItemProps) {
   const itemRef: { current?: HTMLElement } = {};
 
   const itemId = () =>
-    typeof index() !== 'undefined' ? `${accordionId}---${index()}` : undefined;
+    typeof index() !== 'undefined'
+      ? `${accordionId()}---${index()}`
+      : undefined;
   const panelId = () => itemId() && `panel---${itemId()}`;
   const buttonId = () => itemId() && `button---${itemId()}`;
   const state = () => {

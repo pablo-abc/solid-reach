@@ -1,6 +1,13 @@
 import type { Component } from 'solid-js';
 import { createSignal } from 'solid-js';
 import {
+  Combobox,
+  ComboboxList,
+  ComboboxInput,
+  ComboboxPopover,
+  ComboboxOption,
+} from '@solid-reach/combobox';
+import {
   Accordion,
   AccordionItem,
   AccordionButton,
@@ -11,6 +18,7 @@ import { Dialog } from '@solid-reach/dialog';
 import VisuallyHidden from '@solid-reach/visually-hidden';
 import '@solid-reach/dialog/styles.css';
 import '@solid-reach/tabs/styles.css';
+import '@solid-reach/combobox/styles.css';
 
 const App: Component = () => {
   const [show, setShow] = createSignal(false);
@@ -55,6 +63,15 @@ const App: Component = () => {
         </button>
         <p>Hello there. I am a dialog</p>
       </Dialog>
+      <Combobox aria-label="choose a fruit">
+        <ComboboxInput />
+        <ComboboxPopover portal={true}>
+          <ComboboxList>
+            <ComboboxOption value="Apple" />
+            <ComboboxOption value="Banana" />
+          </ComboboxList>
+        </ComboboxPopover>
+      </Combobox>
     </main>
   );
 };

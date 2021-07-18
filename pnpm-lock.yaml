@@ -101,6 +101,18 @@ importers:
       tiny-invariant: 1.1.0
       tiny-warning: 1.0.3
 
+  packages/combobox:
+    specifiers:
+      '@solid-reach/popover': workspace:*
+      '@solid-reach/utils': workspace:*
+      tiny-invariant: ^1.1.0
+      tiny-warning: ^1.0.3
+    dependencies:
+      '@solid-reach/popover': link:../popover
+      '@solid-reach/utils': link:../utils
+      tiny-invariant: 1.1.0
+      tiny-warning: 1.0.3
+
   packages/dialog:
     specifiers:
       '@solid-reach/portal': workspace:*
@@ -167,6 +179,7 @@ importers:
       '@solid-reach/accordion': workspace:*
       '@solid-reach/alert': workspace:*
       '@solid-reach/alert-dialog': workspace:*
+      '@solid-reach/combobox': workspace:*
       '@solid-reach/dialog': workspace:*
       '@solid-reach/disclosure': workspace:*
       '@solid-reach/portal': workspace:*
@@ -180,6 +193,7 @@ importers:
       '@solid-reach/accordion': link:../accordion
       '@solid-reach/alert': link:../alert
       '@solid-reach/alert-dialog': link:../alert-dialog
+      '@solid-reach/combobox': link:../combobox
       '@solid-reach/dialog': link:../dialog
       '@solid-reach/disclosure': link:../disclosure
       '@solid-reach/portal': link:../portal

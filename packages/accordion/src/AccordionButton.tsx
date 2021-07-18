@@ -31,32 +31,38 @@ export default function AccordionButton(props: AccordionButtonProps) {
     state,
   } = useAccordionItemContext();
 
-  function handleClick(event: MouseEvent) {
-    event.preventDefault();
-    const currentIndex = index();
-    if (disabled() || typeof currentIndex === 'undefined') return;
-    ownRef.current?.focus();
-    onSelectPanel(currentIndex);
-  }
-
-  function handleKeyDown(event: KeyboardEvent) {
-    const currentIndex = index();
-    if (typeof currentIndex === 'undefined') return;
-    if (event.key !== 'ArrowUp' && event.key !== 'ArrowDown') return;
-    event.preventDefault();
-    let targetIndex;
-    if (event.key === 'ArrowDown') {
-      if (currentIndex === descendants().length - 1) targetIndex = 0;
-      else targetIndex = currentIndex + 1;
-    } else {
-      if (currentIndex === 0) targetIndex = descendants().length - 1;
-      else targetIndex = currentIndex - 1;
+  const handleClick = composeEventHandler(
+    local.onClick,
+    (event: MouseEvent) => {
+      event.preventDefault();
+      const currentIndex = index();
+      if (disabled() || typeof currentIndex === 'undefined') return;
+      ownRef.current?.focus();
+      onSelectPanel(currentIndex);
     }
-    const targetButton: HTMLButtonElement | null = descendants()[
-      targetIndex
-    ]?.querySelector('[data-reach-accordion-button=""]');
-    targetButton?.focus();
-  }
+  );
+
+  const handleKeyDown = composeEventHandler(
+    local.onKeyDown,
+    (event: KeyboardEvent) => {
+      const currentIndex = index();
+      if (typeof currentIndex === 'undefined') return;
+      if (event.key !== 'ArrowUp' && event.key !== 'ArrowDown') return;
+      event.preventDefault();
+      let targetIndex;
+      if (event.key === 'ArrowDown') {
+        if (currentIndex === descendants().length - 1) targetIndex = 0;
+        else targetIndex = currentIndex + 1;
+      } else {
+        if (currentIndex === 0) targetIndex = descendants().length - 1;
+        else targetIndex = currentIndex - 1;
+      }
+      const targetButton: HTMLButtonElement | null = descendants()[
+        targetIndex
+      ]?.querySelector('[data-reach-accordion-button=""]');
+      targetButton?.focus();
+    }
+  );
 
   return (
     <Dynamic<JSX.ButtonHTMLAttributes<HTMLButtonElement>>
@@ -70,8 +76,8 @@ export default function AccordionButton(props: AccordionButtonProps) {
       data-state={state()}
       disabled={disabled() || undefined}
       id={buttonId()}
-      onClick={composeEventHandler(local.onClick as any, handleClick)}
-      onKeyDown={composeEventHandler(local.onKeyDown as any, handleKeyDown)}
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
     >
       {local.children}
     </Dynamic>
