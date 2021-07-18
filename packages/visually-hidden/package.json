@@ -1,6 +1,6 @@
 {
   "name": "@solid-reach/visually-hidden",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A visually hidden component",
   "main": "dist/index.js",
   "sideEffects": false,

@@ -1,6 +1,6 @@
 {
   "name": "@solid-reach/utils",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Common utilities for Solid reach packages",
   "author": "Pablo Berganza <pablo@berganza.dev>",
   "homepage": "https://github.com/pablo-abc/solid-reach/tree/main/packages/utils",

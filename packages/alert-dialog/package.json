@@ -1,6 +1,6 @@
 {
   "name": "@solid-reach/alert-dialog",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An alert-dialog component",
   "main": "dist/index.js",
   "sideEffects": false,

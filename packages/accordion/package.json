@@ -1,6 +1,6 @@
 {
   "name": "@solid-reach/accordion",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A accordion component",
   "main": "dist/index.js",
   "sideEffects": [
