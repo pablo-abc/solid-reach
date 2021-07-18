@@ -40,8 +40,8 @@
     "solid-js": "^1.0.0"
   },
   "dependencies": {
-    "@solid-reach/utils": "workspace:*",
     "@solid-reach/popover": "workspace:*",
+    "@solid-reach/utils": "workspace:*",
     "tiny-invariant": "^1.1.0",
     "tiny-warning": "^1.0.3"
   },

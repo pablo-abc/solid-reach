@@ -25,19 +25,15 @@ const Template: any = (props: any) => {
   let ref: HTMLElement;
   const [value, setValue] = createSignal('');
   return (
-    <div
-      style={{
-        display: 'flex',
-        'flex-direction': 'column',
-      }}
-    >
-      <label for="popover-example">Type to show popover</label>
+    <div>
+      <label style={{ display: 'block' }} for="popover-example">
+        Type to show popover:
+      </label>
       <textarea
         id="popover-example"
         ref={ref}
         type="string"
         value={value()}
-        placeholder="Type to show popover"
         onInput={(e) => {
           setValue(e.currentTarget.value);
         }}
