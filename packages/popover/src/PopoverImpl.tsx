@@ -11,11 +11,6 @@ import { composeRefs } from '@solid-reach/utils';
 import { PopoverProps } from './types';
 import { getStyles, positionDefault } from './utils';
 
-type RectObserver = {
-  observe(): void;
-  unobserve(): void;
-};
-
 export default function PopoverImpl(props: PopoverProps) {
   props = mergeProps({ as: 'div', position: positionDefault }, props);
   const [local, others] = splitProps(props, [
@@ -31,20 +26,17 @@ export default function PopoverImpl(props: PopoverProps) {
   const [targetRect, setTargetRect] = createSignal<DOMRect>();
 
   createEffect(() => {
-    let targetObserver: RectObserver | undefined;
-    let popoverObserver: RectObserver | undefined;
-    if (local.targetRef) {
-      targetObserver = observeRect(local.targetRef, setTargetRect);
-      targetObserver.observe();
-    }
-    if (popoverRef.current) {
-      popoverObserver = observeRect(popoverRef.current, setPopoverRect);
-      popoverObserver.observe();
-    }
-    onCleanup(() => {
-      targetObserver?.unobserve();
-      popoverObserver?.unobserve();
-    });
+    if (!popoverRef.current) return;
+    const popoverObserver = observeRect(popoverRef.current, setPopoverRect);
+    popoverObserver.observe();
+    onCleanup(() => popoverObserver.unobserve());
+  });
+
+  createEffect(() => {
+    if (!local.targetRef) return;
+    const targetObserver = observeRect(local.targetRef, setTargetRect);
+    targetObserver.observe();
+    onCleanup(() => targetObserver.unobserve());
   });
 
   const styles = () => getStyles(local.position!, targetRect(), popoverRect());

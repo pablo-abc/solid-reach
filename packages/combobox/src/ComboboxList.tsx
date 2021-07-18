@@ -1,4 +1,11 @@
-import { Component, JSX, mergeProps, splitProps, onMount } from 'solid-js';
+import {
+  Component,
+  JSX,
+  mergeProps,
+  splitProps,
+  onMount,
+  createEffect,
+} from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { composeRefs } from '@solid-reach/utils';
 import { useInternalComboboxContext } from './context';
@@ -20,9 +27,9 @@ export default function ComboboxList(props: ComboboxListProps) {
     useInternalComboboxContext();
 
   const ownRef: { current?: HTMLUListElement } = {};
-  if (local.persistSelection) {
-    persistSelectionRef.current = true;
-  }
+  createEffect(() => {
+    persistSelectionRef.current = !!local.persistSelection;
+  });
 
   onMount(() => {
     setListRef(ownRef.current!);

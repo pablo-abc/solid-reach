@@ -29,7 +29,7 @@ export type ComboboxInputProps = {
   autocomplete?: boolean;
   value?: ComboboxValue;
   as?: Component | string;
-} & JSX.InputHTMLAttributes<HTMLInputElement>;
+} & Omit<JSX.InputHTMLAttributes<HTMLInputElement>, 'autocomplete'>;
 
 export default function ComboboxInput(props: ComboboxInputProps) {
   props = mergeProps(
