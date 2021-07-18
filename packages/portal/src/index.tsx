@@ -30,10 +30,10 @@ export default function Portal(props: PortalProps) {
   createRenderEffect(() => {
     const currentPortalNode = portalNode();
     if (!currentPortalNode || !ownerDocument) return;
-    ownerDocument.body.appendChild(currentPortalNode);
+    ownerDocument.body?.appendChild(currentPortalNode);
     onCleanup(() => {
       if (currentPortalNode && currentPortalNode.ownerDocument) {
-        currentPortalNode.ownerDocument.body.removeChild(currentPortalNode);
+        currentPortalNode.ownerDocument.body?.removeChild(currentPortalNode);
       }
     });
   });

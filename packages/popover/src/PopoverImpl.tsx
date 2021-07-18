@@ -48,7 +48,6 @@ export default function PopoverImpl(props: PopoverProps) {
   });
 
   const styles = () => getStyles(local.position!, targetRect(), popoverRect());
-  createEffect(() => console.log(styles()));
 
   // TODO: handle tab navigation??
   return (

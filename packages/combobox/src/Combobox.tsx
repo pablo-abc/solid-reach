@@ -6,6 +6,7 @@ import {
   mergeProps,
   splitProps,
   createSignal,
+  createMemo,
 } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { createDescendants, createId, noop } from '@solid-reach/utils';
@@ -77,7 +78,7 @@ export default function Combobox(props: ComboboxProps) {
     () => data.lastEventType,
     () => inputRef.current
   );
-  const id = () => createId(props.id);
+  const id = createMemo(() => createId(props.id));
   const listboxId = () => (id() ? `listbox---${id()}` : 'listbox');
   const context: InternalComboboxContextValue = {
     ariaLabel: props['aria-label'],
