@@ -39,7 +39,10 @@ export default function Portal(props: PortalProps) {
   });
 
   return (
-    <Show when={portalNode()} fallback={<span ref={setMountNode} />}>
+    <Show
+      when={portalNode()}
+      fallback={<span ref={(ref) => setMountNode(ref)} />}
+    >
       <SolidPortal mount={portalNode()}>{props.children}</SolidPortal>
     </Show>
   );

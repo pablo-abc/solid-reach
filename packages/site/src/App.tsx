@@ -56,6 +56,15 @@ const App: Component = () => {
           </TabPanel>
         </TabPanels>
       </Tabs>
+      <Combobox aria-label="choose a fruit">
+        <ComboboxInput />
+        <ComboboxPopover>
+          <ComboboxList>
+            <ComboboxOption value="Apple" />
+            <ComboboxOption value="Banana" />
+          </ComboboxList>
+        </ComboboxPopover>
+      </Combobox>
       <button onClick={open}>Open Dialog</button>
       <Dialog isOpen={show()} onDismiss={close}>
         <button onClick={close}>
@@ -63,15 +72,6 @@ const App: Component = () => {
         </button>
         <p>Hello there. I am a dialog</p>
       </Dialog>
-      <Combobox aria-label="choose a fruit">
-        <ComboboxInput />
-        <ComboboxPopover portal={true}>
-          <ComboboxList>
-            <ComboboxOption value="Apple" />
-            <ComboboxOption value="Banana" />
-          </ComboboxList>
-        </ComboboxPopover>
-      </Combobox>
     </main>
   );
 };

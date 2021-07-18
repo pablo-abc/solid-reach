@@ -3,18 +3,11 @@
   "version": "0.0.2",
   "description": "A dialog component",
   "main": "dist/index.js",
-  "sideEffects": [
-    "*.css"
-  ],
+  "sideEffects": ["*.css"],
   "author": "Pablo Berganza <pablo@berganza.dev>",
   "repository": "github:pablo-abc/solid-reach",
   "homepage": "https://github.com/pablo-abc/solid-reach/tree/main/packages/dialog",
-  "keywords": [
-    "solidjs",
-    "solid",
-    "components",
-    "a11y"
-  ],
+  "keywords": ["solidjs", "solid", "components", "a11y"],
   "license": "MIT",
   "type": "module",
   "types": "dist/index.d.ts",
@@ -26,14 +19,11 @@
     "./styles.css": "./styles.css",
     "./package.json": "./package.json"
   },
-  "files": [
-    "dist",
-    "styles.css"
-  ],
+  "files": ["dist", "styles.css"],
   "scripts": {
     "prebuild": "rimraf ./dist",
-    "build": "tsc && rollup -c",
-    "dev": "tsc-watch --onSuccess 'rollup -c'",
+    "build": "rollup -c",
+    "dev": "rollup -cw",
     "prepublishOnly": "pnpm run build"
   },
   "peerDependencies": {

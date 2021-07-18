@@ -7,8 +7,8 @@
     "site:dev": "pnpm --filter='@solid-reach/site' dev",
     "site:build": "pnpm --filter='@solid-reach/site' build",
     "site:preview": "pnpm --filter='@solid-reach/site' start",
-    "dev": "pnpm --parallel --filter='!@solid-reach/site' dev",
-    "build": "pnpm --filter='!@solid-reach/site' build",
+    "dev": "pnpm --parallel --filter='!@solid-reach/site' --filter='!@solid-reach/rollup-plugin-jsx' dev",
+    "build": "pnpm --filter='!@solid-reach/site' --filter='!@solid-reach/rollup-plugin-jsx' build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook --docs -o docs",
@@ -41,7 +41,6 @@
     "rollup-plugin-bundle-size": "^1.0.3",
     "rollup-plugin-terser": "^7.0.2",
     "solid-js": "^1.0.2",
-    "tsc-watch": "^4.4.0",
     "typescript": "^4.3.5"
   },
   "devDependencies": {
