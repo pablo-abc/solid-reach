@@ -9,7 +9,12 @@ import {
   createMemo,
 } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
-import { createDescendants, createId, noop } from '@solid-reach/utils';
+import {
+  createDescendants,
+  createId,
+  noop,
+  useCheckStyles,
+} from '@solid-reach/utils';
 import {
   ComboboxContext,
   ComboboxContextValue,
@@ -99,6 +104,8 @@ export default function Combobox(props: ComboboxProps) {
     setListRef,
     descendants,
   };
+
+  useCheckStyles('combobox');
 
   return (
     <ComboboxContext.Provider value={context}>

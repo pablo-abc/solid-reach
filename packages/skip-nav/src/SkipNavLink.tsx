@@ -1,4 +1,5 @@
-import { JSX, mergeProps, splitProps, Component } from 'solid-js';
+import { JSX, mergeProps, splitProps, Component, createMemo } from 'solid-js';
+import { useCheckStyles } from '@solid-reach/utils';
 import { Dynamic } from 'solid-js/web';
 
 export type SkipNavLinkProps = {
@@ -16,7 +17,10 @@ export default function SkipNavLink(props: SkipNavLinkProps) {
     'ref',
     'contentId',
   ]);
-  const id = () => local.contentId || 'reach-skip-nav';
+
+  const id = createMemo(() => local.contentId || 'reach-skip-nav');
+
+  useCheckStyles('skip-nav');
 
   return (
     <Dynamic<JSX.AnchorHTMLAttributes<HTMLAnchorElement>>

@@ -3,6 +3,7 @@ import {
   createId,
   noop,
   createDescendants,
+  useCheckStyles,
 } from '@solid-reach/utils';
 import {
   Component,
@@ -11,8 +12,6 @@ import {
   createSignal,
   JSX,
   mergeProps,
-  onCleanup,
-  onMount,
   splitProps,
 } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
@@ -152,6 +151,8 @@ export default function Accordion(props: AccordionProps) {
     readOnly: createMemo(() => props.readOnly!),
     descendants,
   };
+
+  useCheckStyles('accordion');
 
   return (
     <AccordionContext.Provider value={context}>

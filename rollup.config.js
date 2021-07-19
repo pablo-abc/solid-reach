@@ -3,6 +3,7 @@ import babel from '@rollup/plugin-babel';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import jsxPlugin from '@solid-reach/rollup-plugin-jsx';
 import jsx from 'acorn-jsx';
+import bundleSize from 'rollup-plugin-bundle-size';
 
 export default [
   {
@@ -19,11 +20,12 @@ export default [
       nodeResolve({
         extensions: ['.js', '.ts', '.tsx'],
       }),
+      typescript(),
       babel({
         extensions: ['.js', '.ts', '.tsx'],
         babelHelpers: 'bundled',
-        presets: ['@babel/preset-typescript'],
         plugins: [
+          '@babel/plugin-syntax-jsx',
           'babel-plugin-annotate-pure-calls',
           'babel-plugin-dev-expression',
         ],
@@ -45,17 +47,18 @@ export default [
       nodeResolve({
         extensions: ['.js', '.ts', '.tsx'],
       }),
-      typescript({ emitDeclarationOnly: true }),
+      typescript(),
       babel({
         extensions: ['.js', '.ts', '.tsx'],
         babelHelpers: 'bundled',
-        presets: ['solid', '@babel/preset-typescript'],
+        presets: ['solid'],
         plugins: [
           'babel-plugin-annotate-pure-calls',
           'babel-plugin-dev-expression',
         ],
         exclude: 'node_modules/**',
       }),
+      bundleSize(),
     ],
   },
 ];

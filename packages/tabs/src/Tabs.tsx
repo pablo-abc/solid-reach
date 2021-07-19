@@ -1,4 +1,9 @@
-import { composeRefs, createDescendants, createId } from '@solid-reach/utils';
+import {
+  composeRefs,
+  createDescendants,
+  createId,
+  useCheckStyles,
+} from '@solid-reach/utils';
 import {
   Component,
   createMemo,
@@ -106,6 +111,8 @@ export default function Tabs(props: TabsProps) {
     userInteractedRef,
     descendants,
   };
+
+  useCheckStyles('tabs');
 
   return (
     <TabsContext.Provider value={context}>

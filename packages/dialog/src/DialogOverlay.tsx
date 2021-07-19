@@ -1,4 +1,5 @@
 import { JSX, mergeProps, splitProps, createEffect, Show } from 'solid-js';
+import { useCheckStyles } from '@solid-reach/utils';
 import Portal from '@solid-reach/portal';
 import { DialogProps } from './types';
 import DialogInner from './DialogInner';
@@ -25,6 +26,9 @@ export default function DialogOverlay(props: DialogOverlayProps) {
       });
     }
   });
+
+  useCheckStyles('dialog');
+
   return (
     <Show when={local.isOpen}>
       <Portal>

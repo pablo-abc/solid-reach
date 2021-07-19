@@ -1,7 +1,7 @@
 import typescript from 'rollup-plugin-ts';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
-import replace from '@rollup/plugin-replace';
+import babel from '@rollup/plugin-babel';
 import pkg from './package.json';
 import * as fs from 'fs';
 
@@ -24,15 +24,18 @@ export default [
       name,
     },
     plugins: [
-      replace({
-        'process.env.NODE_ENV': JSON.stringify(
-          prod ? 'production' : 'development'
-        ),
-        preventAssignment: true,
-      }),
-      resolve({ browser: true }),
+      resolve({ browser: true, extensions: ['.js', '.ts', '.tsx'] }),
       commonjs(),
       typescript(),
+      babel({
+        extensions: ['.js', '.ts', '.tsx'],
+        babelHelpers: 'bundled',
+        plugins: [
+          'babel-plugin-annotate-pure-calls',
+          'babel-plugin-dev-expression',
+        ],
+        exclude: 'node_modules/**',
+      }),
     ],
   },
   {
@@ -45,16 +48,17 @@ export default [
       exports: 'named',
     },
     plugins: [
-      replace({
-        'process.env.NODE_ENV': JSON.stringify(
-          prod ? 'production' : 'development'
-        ),
-        preventAssignment: true,
-      }),
-      resolve({ browser: true }),
+      resolve({ browser: true, extensions: ['.js', '.ts', '.tsx'] }),
       commonjs(),
-      typescript({
-        declarationDir: './dist/esm',
+      typescript(),
+      babel({
+        extensions: ['.js', '.ts', '.tsx'],
+        babelHelpers: 'bundled',
+        plugins: [
+          'babel-plugin-annotate-pure-calls',
+          'babel-plugin-dev-expression',
+        ],
+        exclude: 'node_modules/**',
       }),
     ],
   },

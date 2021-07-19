@@ -19,6 +19,7 @@ import VisuallyHidden from '@solid-reach/visually-hidden';
 import '@solid-reach/dialog/styles.css';
 import '@solid-reach/tabs/styles.css';
 import '@solid-reach/combobox/styles.css';
+import '@solid-reach/accordion/styles.css';
 
 const App: Component = () => {
   const [show, setShow] = createSignal(false);
