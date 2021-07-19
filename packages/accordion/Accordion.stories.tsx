@@ -62,11 +62,21 @@ const Template: any = (props: any) => {
 
 export const Uncontrolled = Template.bind({});
 
+Uncontrolled.args = {
+  collapsible: false,
+  multiple: false,
+  defaultIndex: 0,
+};
+
 Uncontrolled.argTypes = {
   collapsible: {
     control: 'boolean',
   },
   multiple: { control: 'boolean' },
+  defaultIndex: {
+    options: [0, 1],
+    control: 'select',
+  },
 };
 
 export const Controlled = Template.bind({});
