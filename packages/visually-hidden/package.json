@@ -3,6 +3,7 @@
   "version": "0.0.2",
   "description": "A visually hidden component",
   "main": "dist/index.js",
+  "module": "dist/index.js",
   "sideEffects": false,
   "author": "Pablo Berganza <pablo@berganza.dev>",
   "repository": "github:pablo-abc/solid-reach",
