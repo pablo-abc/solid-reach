@@ -1,6 +1,6 @@
 {
   "name": "@solid-reach/portal",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A portal component",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -8,7 +8,12 @@
   "author": "Pablo Berganza <pablo@berganza.dev>",
   "repository": "github:pablo-abc/solid-reach",
   "homepage": "https://github.com/pablo-abc/solid-reach/tree/main/packages/portal",
-  "keywords": ["solidjs", "solid", "a11y", "components"],
+  "keywords": [
+    "solidjs",
+    "solid",
+    "a11y",
+    "components"
+  ],
   "license": "MIT",
   "type": "module",
   "types": "dist/index.d.ts",
@@ -19,7 +24,9 @@
     },
     "./package.json": "./package.json"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "prebuild": "rimraf ./dist",
     "build": "rollup -c",

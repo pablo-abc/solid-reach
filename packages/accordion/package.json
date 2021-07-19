@@ -1,14 +1,21 @@
 {
   "name": "@solid-reach/accordion",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A accordion component",
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "sideEffects": ["*.css"],
+  "sideEffects": [
+    "*.css"
+  ],
   "author": "Pablo Berganza <pablo@berganza.dev>",
   "repository": "github:pablo-abc/solid-reach",
   "homepage": "https://github.com/pablo-abc/solid-reach/tree/main/packages/accordion",
-  "keywords": ["solidjs", "solid", "a11y", "components"],
+  "keywords": [
+    "solidjs",
+    "solid",
+    "a11y",
+    "components"
+  ],
   "license": "MIT",
   "type": "module",
   "types": "dist/index.d.ts",
@@ -20,7 +27,10 @@
     "./styles.css": "./styles.css",
     "./package.json": "./package.json"
   },
-  "files": ["dist", "styles.css"],
+  "files": [
+    "dist",
+    "styles.css"
+  ],
   "scripts": {
     "prebuild": "rimraf ./dist",
     "build": "rollup -c",

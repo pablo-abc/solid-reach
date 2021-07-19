@@ -25,5 +25,6 @@
     "@solid-reach/combobox": "workspace:*",
     "@solid-reach/popover": "workspace:*",
     "solid-js": "^1.0.0"
-  }
+  },
+  "version": null
 }
