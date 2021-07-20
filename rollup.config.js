@@ -41,7 +41,7 @@ export default [
       babel({
         extensions: ['.js', '.ts', '.tsx'],
         babelHelpers: 'bundled',
-        presets: ['@babel/preset-typescript'],
+        presets: ['@babel/preset-typescript', '@babel/preset-env'],
         plugins: [
           '@babel/plugin-syntax-jsx',
           'babel-plugin-annotate-pure-calls',
@@ -69,7 +69,7 @@ export default [
       babel({
         extensions: ['.js', '.ts', '.tsx'],
         babelHelpers: 'bundled',
-        presets: ['solid', '@babel/preset-typescript'],
+        presets: ['solid', '@babel/preset-typescript', '@babel/preset-env'],
         plugins: [
           'babel-plugin-annotate-pure-calls',
           'babel-plugin-dev-expression',
