@@ -2,31 +2,24 @@
   "name": "@solid-reach/disclosure",
   "version": "0.0.3",
   "description": "A disclosure component",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
+  "main": "dist/js/index.js",
+  "module": "dist/js/index.js",
   "sideEffects": false,
   "author": "Pablo Berganza <pablo@berganza.dev>",
   "repository": "github:pablo-abc/solid-reach",
   "homepage": "https://github.com/pablo-abc/solid-reach/tree/main/packages/disclosure",
-  "keywords": [
-    "solidjs",
-    "solid",
-    "a11y",
-    "components"
-  ],
+  "keywords": ["solidjs", "solid", "a11y", "components"],
   "license": "MIT",
   "type": "module",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "solid": "./dist/index.jsx",
-      "default": "./dist/index.js"
+      "solid": "./dist/solid/index.jsx",
+      "default": "./dist/js/index.js"
     },
     "./package.json": "./package.json"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "prebuild": "rimraf ./dist",
     "build": "rollup -c",

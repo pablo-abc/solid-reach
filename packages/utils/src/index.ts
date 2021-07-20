@@ -6,3 +6,4 @@ export { canUseDOM } from './utils/can-use-dom';
 export { getOwnerDocument } from './utils/owner-document';
 export { createDescendants } from './utils/create-descendants';
 export { useCheckStyles } from './utils/dev-utils';
+export { isFunction } from './utils/is-function';

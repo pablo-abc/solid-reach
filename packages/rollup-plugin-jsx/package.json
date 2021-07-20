@@ -9,12 +9,7 @@
   "author": "Pablo Berganza <pablo@berganza.dev>",
   "repository": "github:pablo-abc/solid-reach",
   "homepage": "https://github.com/pablo-abc/solid-reach/tree/main/packages/rollup-plugin-jsx",
-  "keywords": [
-    "solidjs",
-    "solid",
-    "a11y",
-    "components"
-  ],
+  "keywords": ["solidjs", "solid", "a11y", "components"],
   "license": "MIT",
   "scripts": {
     "prebuild": "rimraf ./dist",
@@ -27,9 +22,7 @@
     },
     "./package.json": "./package.json"
   },
-  "files": [
-    "./index.js"
-  ],
+  "files": ["./index.js"],
   "publishConfig": {
     "access": "public"
   },

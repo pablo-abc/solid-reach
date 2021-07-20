@@ -46,6 +46,7 @@ export default [
       format: 'esm',
       sourcemap: prod,
       exports: 'named',
+      hoistTransitiveImports: false,
     },
     plugins: [
       resolve({ browser: true, extensions: ['.js', '.ts', '.tsx'] }),

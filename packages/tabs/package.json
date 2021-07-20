@@ -2,35 +2,25 @@
   "name": "@solid-reach/tabs",
   "version": "0.0.3",
   "description": "A tabs component",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "sideEffects": [
-    "*.css"
-  ],
+  "main": "dist/js/index.js",
+  "module": "dist/js/index.js",
+  "sideEffects": ["*.css"],
   "author": "Pablo Berganza <pablo@berganza.dev>",
   "repository": "github:pablo-abc/solid-reach",
   "homepage": "https://github.com/pablo-abc/solid-reach/tree/main/packages/tabs",
-  "keywords": [
-    "solidjs",
-    "solid",
-    "a11y",
-    "components"
-  ],
+  "keywords": ["solidjs", "solid", "a11y", "components"],
   "license": "MIT",
   "type": "module",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "solid": "./dist/index.jsx",
-      "default": "./dist/index.js"
+      "solid": "./dist/solid/index.jsx",
+      "default": "./dist/js/index.js"
     },
     "./styles.css": "./styles.css",
     "./package.json": "./package.json"
   },
-  "files": [
-    "dist",
-    "styles.css"
-  ],
+  "files": ["dist", "styles.css"],
   "scripts": {
     "prebuild": "rimraf ./dist",
     "build": "rollup -c",
