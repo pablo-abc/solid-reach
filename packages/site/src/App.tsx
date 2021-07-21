@@ -1,5 +1,5 @@
 import type { Component } from 'solid-js';
-import { createSignal } from 'solid-js';
+import { createSignal, createEffect } from 'solid-js';
 import {
   Combobox,
   ComboboxList,
@@ -16,15 +16,18 @@ import {
 import { Tab, TabList, Tabs, TabPanel, TabPanels } from '@solid-reach/tabs';
 import { Dialog } from '@solid-reach/dialog';
 import VisuallyHidden from '@solid-reach/visually-hidden';
+import Tooltip from '@solid-reach/tooltip';
 import '@solid-reach/dialog/styles.css';
 import '@solid-reach/tabs/styles.css';
 import '@solid-reach/combobox/styles.css';
 import '@solid-reach/accordion/styles.css';
+import '@solid-reach/tooltip/styles.css';
 
 const App: Component = () => {
   const [show, setShow] = createSignal(false);
   const open = () => setShow(true);
   const close = () => setShow(false);
+
   return (
     <main>
       <Accordion>
@@ -73,6 +76,9 @@ const App: Component = () => {
         </button>
         <p>Hello there. I am a dialog</p>
       </Dialog>
+      <Tooltip label="Hi hi hi">
+        {(trigger) => <button {...trigger}>Hover me</button>}
+      </Tooltip>
     </main>
   );
 };

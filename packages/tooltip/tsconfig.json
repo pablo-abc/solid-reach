@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "target": "es2017",
+    "newLine": "LF",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "outDir": "./dist",
+    "module": "esnext",
+    "typeRoots": ["./node_modules/@types", "../../typings"]
+  },
+  "include": ["./src", "../../typings"],
+  "exclude": ["node_modules/"]
+}

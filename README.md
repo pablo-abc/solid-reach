@@ -46,7 +46,7 @@ The current objective is to get feature-parity with ReachUI. Ideally maintaining
 | 💪     | Portal          |
 | 💪     | Skip Nav        |
 | 💪      | Tabs            |
-| 🛠      | Tooltip         |
+| 💪      | Tooltip         |
 | 💪     | Visually Hidden |
 
 We are also missing some dev goodies and warnings available in ReachUI.
