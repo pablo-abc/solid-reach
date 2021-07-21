@@ -1,6 +1,6 @@
 {
   "name": "@solid-reach/visually-hidden",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A visually hidden component",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -8,12 +8,7 @@
   "author": "Pablo Berganza <pablo@berganza.dev>",
   "repository": "github:pablo-abc/solid-reach",
   "homepage": "https://github.com/pablo-abc/solid-reach/tree/main/packages/visually-hidden",
-  "keywords": [
-    "solidjs",
-    "solid",
-    "components",
-    "a11y"
-  ],
+  "keywords": ["solidjs", "solid", "components", "a11y"],
   "license": "MIT",
   "type": "module",
   "types": "dist/index.d.ts",
@@ -24,9 +19,7 @@
     },
     "./package.json": "./package.json"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "prebuild": "rimraf ./dist",
     "build": "rollup -c",

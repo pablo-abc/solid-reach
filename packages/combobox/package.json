@@ -1,6 +1,6 @@
 {
   "name": "@solid-reach/combobox",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A combobox component",
   "main": "dist/index.js",
   "module": "dist/index.js",

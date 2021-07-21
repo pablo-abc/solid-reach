@@ -1,14 +1,21 @@
 {
   "name": "@solid-reach/tooltip",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A tooltip component",
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "sideEffects": ["*.css"],
+  "sideEffects": [
+    "*.css"
+  ],
   "author": "Pablo Berganza <pablo@berganza.dev>",
   "repository": "github:pablo-abc/solid-reach",
   "homepage": "https://github.com/pablo-abc/solid-reach/tree/main/packages/tooltip",
-  "keywords": ["solidjs", "solid", "a11y", "components"],
+  "keywords": [
+    "solidjs",
+    "solid",
+    "a11y",
+    "components"
+  ],
   "license": "MIT",
   "type": "module",
   "types": "dist/index.d.ts",
@@ -20,7 +27,9 @@
     "./styles.css": "./styles.css",
     "./package.json": "./package.json"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "prebuild": "rimraf ./dist",
     "build": "rollup -c",

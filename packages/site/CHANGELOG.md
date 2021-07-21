@@ -1,6 +1,23 @@
 # @solid-reach/site
 
 ## null
+
+### Patch Changes
+
+- @solid-reach/accordion@0.0.4
+- @solid-reach/alert@0.0.4
+- @solid-reach/alert-dialog@0.0.4
+- @solid-reach/combobox@0.0.4
+- @solid-reach/dialog@0.0.4
+- @solid-reach/disclosure@0.0.4
+- @solid-reach/popover@0.0.4
+- @solid-reach/portal@0.0.4
+- @solid-reach/skip-nav@0.0.4
+- @solid-reach/tabs@0.0.4
+- @solid-reach/tooltip@0.0.4
+
+## null
+
 ### Patch Changes
 
 - Updated dependencies [df4a886]

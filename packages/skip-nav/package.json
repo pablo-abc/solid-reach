@@ -1,6 +1,6 @@
 {
   "name": "@solid-reach/skip-nav",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A skip-nav component",
   "main": "dist/index.js",
   "module": "dist/index.js",

@@ -1,6 +1,6 @@
 {
   "name": "@solid-reach/dialog",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A dialog component",
   "main": "dist/index.js",
   "module": "dist/index.js",
