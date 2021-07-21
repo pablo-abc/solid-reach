@@ -39,7 +39,7 @@ export type ComboboxProps = {
   onSelect?(value: ComboboxValue): void;
   openOnFocus?: boolean;
   as?: Component | string;
-} & JSX.HTMLAttributes<HTMLDivElement>;
+} & Omit<JSX.HTMLAttributes<HTMLDivElement>, 'onSelect'>;
 
 function useFocusManagement(
   lastEventType: Accessor<MachineEventType | undefined>,
@@ -103,6 +103,7 @@ export default function Combobox(props: ComboboxProps) {
     transition,
     setListRef,
     descendants,
+    isFocusedRef: { current: false },
   };
 
   useCheckStyles('combobox');

@@ -162,7 +162,7 @@ export function useKeyDown() {
 }
 
 export function useBlur() {
-  const { state, transition, popoverRef, inputRef, buttonRef } =
+  const { state, transition, popoverRef, inputRef, buttonRef, isFocusedRef } =
     useInternalComboboxContext();
 
   return function handleBlur(event: FocusEvent) {
@@ -170,6 +170,7 @@ export function useBlur() {
     let input = inputRef.current;
     let button = buttonRef.current;
     let activeElement = event.relatedTarget as Node;
+    isFocusedRef.current = false;
 
     // we on want to close only if focus props outside the combobox
     if (activeElement !== input && activeElement !== button && popover) {

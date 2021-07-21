@@ -25,8 +25,11 @@ import '@solid-reach/tooltip/styles.css';
 
 const App: Component = () => {
   const [show, setShow] = createSignal(false);
+  const [value, setValue] = createSignal('');
   const open = () => setShow(true);
   const close = () => setShow(false);
+
+  createEffect(() => console.log(value()));
 
   return (
     <main>
@@ -60,8 +63,18 @@ const App: Component = () => {
           </TabPanel>
         </TabPanels>
       </Tabs>
-      <Combobox aria-label="choose a fruit">
-        <ComboboxInput />
+      <button type="button" onClick={() => setValue('apple')}>
+        Set
+      </button>
+      <Combobox
+        style={{ 'margin-bottom': '50px' }}
+        aria-label="choose a fruit"
+        onSelect={setValue}
+      >
+        <ComboboxInput
+          value={value()}
+          onInput={(e) => setValue(e.currentTarget.value)}
+        />
         <ComboboxPopover>
           <ComboboxList>
             <ComboboxOption value="Apple" />

@@ -22,6 +22,7 @@ export type InternalComboboxContextValue = {
   transition: Transition;
   setListRef(list: HTMLElement): void;
   descendants: Accessor<HTMLElement[]>;
+  isFocusedRef: Ref<boolean>;
 };
 
 export interface ComboboxOptionContextValue {

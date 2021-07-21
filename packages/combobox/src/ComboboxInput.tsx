@@ -42,18 +42,12 @@ export default function ComboboxInput(props: ComboboxInputProps) {
     'selectOnClick',
     'autocomplete',
     'onClick',
-    'onChange',
+    'onInput',
     'onKeyDown',
     'onBlur',
     'onFocus',
     'value',
   ]);
-  let initialControlledValue = local.value;
-  let controlledValueChanged = false;
-  createEffect(() => {
-    if (initialControlledValue === local.value) return;
-    controlledValueChanged = true;
-  });
 
   const {
     data,
@@ -67,6 +61,7 @@ export default function ComboboxInput(props: ComboboxInputProps) {
     ariaLabel,
     ariaLabelledby,
     persistSelectionRef,
+    isFocusedRef,
   } = useInternalComboboxContext();
 
   let selectOnClickRef = false;
@@ -84,7 +79,7 @@ export default function ComboboxInput(props: ComboboxInputProps) {
   function handleValueChange(value: ComboboxValue) {
     if (value.trim() === '') {
       transition(CLEAR);
-    } else if (value === initialControlledValue && !controlledValueChanged) {
+    } else if (!isFocusedRef.current) {
       transition(INITIAL_CHANGE, { value });
     } else {
       transition(CHANGE, { value });
@@ -102,7 +97,7 @@ export default function ComboboxInput(props: ComboboxInputProps) {
     }
   });
 
-  const handleChange = composeEventHandler(local.onChange, (event: Event) => {
+  const handleChange = composeEventHandler(local.onInput, (event: Event) => {
     const { value } = event.target as HTMLInputElement;
     if (!isControlled()) {
       handleValueChange(value);
@@ -110,6 +105,7 @@ export default function ComboboxInput(props: ComboboxInputProps) {
   });
 
   const handleFocus = composeEventHandler(local.onFocus, () => {
+    isFocusedRef.current = true;
     if (local.selectOnClick) {
       selectOnClickRef = true;
     }
